@@ -46,7 +46,7 @@ class _ExampleSidebarXState extends State<ExampleSidebarX> {
         margin: EdgeInsets.only(top: 40.h),
         width: MediaQuery.sizeOf(context).width > 1000
             ? MediaQuery.sizeOf(context).width * 0.25
-            : MediaQuery.sizeOf(context).width * 0.5,
+            : MediaQuery.sizeOf(context).width * 0.59,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -81,37 +81,49 @@ class _ExampleSidebarXState extends State<ExampleSidebarX> {
             }),
         SidebarXItem(
             icon: Icons.currency_bitcoin,
-            label: 'Spending',
+            label: 'Pick Order',
             onTap: () {
               Navigator.of(context).pop();
             }),
         SidebarXItem(
             icon: Icons.gps_fixed,
-            label: 'Affiliate',
+            label: 'Pack Order',
             onTap: () {
               Navigator.of(context).pop();
             }),
         SidebarXItem(
             icon: Icons.gavel,
-            label: 'Withdrawal',
+            label: 'Handover',
             onTap: () {
               Navigator.of(context).pop();
             }),
         SidebarXItem(
-            icon: Icons.payment,
-            label: 'Po Payment',
+            icon: Icons.gavel,
+            label: 'Photography Order',
             onTap: () {
               Navigator.of(context).pop();
             }),
         SidebarXItem(
-            icon: Icons.cases_sharp,
-            label: 'Temporary Cash',
+            icon: Icons.gavel,
+            label: 'Prepare Photography',
             onTap: () {
               Navigator.of(context).pop();
             }),
         SidebarXItem(
-            icon: Icons.person,
-            label: 'Employee',
+            icon: Icons.gavel,
+            label: 'Received Photography',
+            onTap: () {
+              Navigator.of(context).pop();
+            }),
+        SidebarXItem(
+            icon: Icons.gavel,
+            label: 'Return Photography',
+            onTap: () {
+              Navigator.of(context).pop();
+            }),
+        SidebarXItem(
+            icon: Icons.gavel,
+            label: 'Done Photography',
             onTap: () {
               Navigator.of(context).pop();
             }),

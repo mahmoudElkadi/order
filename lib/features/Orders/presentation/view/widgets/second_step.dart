@@ -12,8 +12,20 @@ import 'package:order/features/Orders/manger/Order%20cubit/order_state.dart';
 
 import '../../../../../core/widgets/custom_form_field.dart';
 
-class SecondStep extends StatelessWidget {
+class SecondStep extends StatefulWidget {
   const SecondStep({super.key});
+
+  @override
+  State<SecondStep> createState() => _SecondStepState();
+}
+
+class _SecondStepState extends State<SecondStep> {
+  TextEditingController priceController = TextEditingController();
+  @override
+  void initState() {
+    priceController.text = "123555";
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +77,7 @@ class SecondStep extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Container(
                         padding: EdgeInsets.all(10.h),
                         decoration: BoxDecoration(
@@ -105,7 +117,7 @@ class SecondStep extends StatelessWidget {
                               children: [
                                 Container(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 15.w, vertical: 8.h),
+                                      horizontal: 15.w, vertical: 11.h),
                                   decoration: BoxDecoration(
                                       color: Colors.green,
                                       borderRadius: BorderRadius.circular(10)),
@@ -129,11 +141,22 @@ class SecondStep extends StatelessWidget {
                                             Colors.white, FontWeight.w600),
                                       ),
                                       const WidthSpacer(5),
-                                      ReusableText(
-                                        text: "1235",
-                                        style: appStyle(context, 18,
-                                            Colors.white, FontWeight.w600),
-                                      ),
+                                      Container(
+                                        width:
+                                            MediaQuery.sizeOf(context).width *
+                                                0.17,
+                                        height: 30,
+                                        child: TextFormField(
+                                          cursorColor: Colors.white,
+                                          controller: priceController,
+                                          keyboardType: TextInputType.number,
+                                          style: appStyle(context, 18,
+                                              Colors.white, FontWeight.w600),
+                                          decoration: const InputDecoration(
+                                            border: InputBorder.none,
+                                          ),
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),

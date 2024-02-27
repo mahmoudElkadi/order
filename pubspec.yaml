@@ -50,6 +50,7 @@ dependencies:
   http: ^1.2.0
   lottie: ^3.0.0
   delayed_widget: ^1.1.1
+  qr_code_scanner: ^1.0.1
 
 
 dev_dependencies:

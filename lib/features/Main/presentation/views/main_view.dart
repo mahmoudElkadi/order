@@ -6,7 +6,15 @@ import 'package:order/features/Orders/presentation/view/order_view.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../../core/utils/app_style.dart';
+import '../../../Photography Create Order/presentation/view/photography_view.dart';
+import '../../../Photography Done Order/presentation/view/photography_done_view.dart';
+import '../../../Photography Prepare Order/presentation/view/photography_prepare_view.dart';
+import '../../../Photography Recived Order/presentation/view/photography_recevied_view.dart';
+import '../../../Photography Return Order/presentation/view/photography_return_view.dart';
 import '../../../Warehouse Pocklist/presentation/view/warehouse_picklist.dart';
+import '../../../pack Order/presentation/view/pack_order.dart';
+import '../../../pick Order/presentation/view/pick_order.dart';
+import '../../../qr code/presentation/view/qr_handover.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key, this.pageIndex});
@@ -34,6 +42,7 @@ class _MainViewState extends State<MainView> {
       builder: (context) {
         final isSmallScreen = MediaQuery.of(context).size.width < 1200;
         return Scaffold(
+          backgroundColor: Colors.grey.shade100,
           key: _key,
           appBar: isSmallScreen
               ? AppBar(
@@ -74,10 +83,10 @@ class _MainViewState extends State<MainView> {
                               ? Padding(
                                   padding: EdgeInsets.only(right: 30.w),
                                   child: Center(
-                                    child: Text("SPENDING",
+                                    child: Text("Pick New Order",
                                         textAlign: TextAlign.center,
                                         style: appStyle(context, 22,
-                                            Colors.white, FontWeight.bold)),
+                                            Colors.black, FontWeight.bold)),
                                   ),
                                 )
                               : _controller.selectedIndex == 3
@@ -85,9 +94,9 @@ class _MainViewState extends State<MainView> {
                                       padding: EdgeInsets.only(right: 30.w),
                                       child: Center(
                                         child: Text(
-                                          "AFFILIATE WALLET",
+                                          "Pack New Order",
                                           style: appStyle(context, 22,
-                                              Colors.white, FontWeight.bold),
+                                              Colors.black, FontWeight.bold),
                                         ),
                                       ),
                                     )
@@ -96,11 +105,11 @@ class _MainViewState extends State<MainView> {
                                           padding: EdgeInsets.only(right: 30.w),
                                           child: Center(
                                             child: Text(
-                                              "EMPLOYEE WITHDRAWAL",
+                                              "Handover",
                                               style: appStyle(
                                                   context,
                                                   22,
-                                                  Colors.white,
+                                                  Colors.black,
                                                   FontWeight.bold),
                                             ),
                                           ),
@@ -111,11 +120,11 @@ class _MainViewState extends State<MainView> {
                                                   EdgeInsets.only(right: 30.w),
                                               child: Center(
                                                 child: Text(
-                                                  "PURCHASE ORDERS' SUPPLIERS",
+                                                  "Photography Order",
                                                   style: appStyle(
                                                       context,
                                                       20,
-                                                      Colors.white,
+                                                      Colors.black,
                                                       FontWeight.bold),
                                                 ),
                                               ),
@@ -126,29 +135,87 @@ class _MainViewState extends State<MainView> {
                                                       right: 30.w),
                                                   child: Center(
                                                     child: Text(
-                                                      "Temporary Cash",
+                                                      "Prepare Order",
                                                       style: appStyle(
                                                           context,
-                                                          22,
-                                                          Colors.white,
+                                                          20,
+                                                          Colors.black,
                                                           FontWeight.bold),
                                                     ),
                                                   ),
                                                 )
-                                              : Padding(
-                                                  padding: EdgeInsets.only(
-                                                      right: 30.w),
-                                                  child: Center(
-                                                    child: Text(
-                                                      "Employee",
-                                                      style: appStyle(
-                                                          context,
-                                                          22,
-                                                          Colors.white,
-                                                          FontWeight.bold),
-                                                    ),
-                                                  ),
-                                                ),
+                                              : _controller.selectedIndex == 7
+                                                  ? Padding(
+                                                      padding: EdgeInsets.only(
+                                                          right: 30.w),
+                                                      child: Center(
+                                                        child: Text(
+                                                          "Received For Photography",
+                                                          style: appStyle(
+                                                              context,
+                                                              20,
+                                                              Colors.white,
+                                                              FontWeight.bold),
+                                                        ),
+                                                      ),
+                                                    )
+                                                  : _controller.selectedIndex ==
+                                                          8
+                                                      ? Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  right: 30.w),
+                                                          child: Center(
+                                                            child: Text(
+                                                              "Return Photography",
+                                                              style: appStyle(
+                                                                  context,
+                                                                  20,
+                                                                  Colors.black,
+                                                                  FontWeight
+                                                                      .bold),
+                                                            ),
+                                                          ),
+                                                        )
+                                                      : _controller
+                                                                  .selectedIndex ==
+                                                              9
+                                                          ? Padding(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      right:
+                                                                          30.w),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "Done",
+                                                                  style: appStyle(
+                                                                      context,
+                                                                      20,
+                                                                      Colors
+                                                                          .black,
+                                                                      FontWeight
+                                                                          .bold),
+                                                                ),
+                                                              ),
+                                                            )
+                                                          : Padding(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                      right:
+                                                                          30.w),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  "PURCHASE ORDERS' SUPPLIERS",
+                                                                  style: appStyle(
+                                                                      context,
+                                                                      20,
+                                                                      Colors
+                                                                          .white,
+                                                                      FontWeight
+                                                                          .bold),
+                                                                ),
+                                                              ),
+                                                            ),
                   actions: const [],
                 )
               : null,
@@ -171,6 +238,46 @@ class _MainViewState extends State<MainView> {
                           setState(() {});
                         });
                         return const WarehousePicklistView();
+                      case 2:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PickOrder();
+                      case 3:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PackOrder();
+                      case 4:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const QRHandover();
+                      case 5:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PhotographyOrder();
+                      case 6:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PhotographyPrepareOrder();
+                      case 7:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PhotographyReceivedOrder();
+                      case 8:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PhotographyReturnOrder();
+                      case 9:
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          setState(() {});
+                        });
+                        return const PhotographyDoneOrder();
 
                       default:
                         return Text(
